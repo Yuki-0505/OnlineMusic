@@ -1,0 +1,6 @@
+//歌曲推荐类型
+{
+	"songPlay":"播放排行榜",
+	"songDownload":"下载排行榜",
+	"songCollection":"收藏排行榜"
+}

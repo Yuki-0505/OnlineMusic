@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<script src="js/jquery-3.2.1.js"></script>
+	<script>
+		$(function(){
+			$("#btn").click(function(){
+				$("div").each(function(index, element){
+					if ($(element).is(":visible")) {
+						$(element).css("display","none");
+					} else{
+						$(element).css("display","block");
+					}
+				})
+			})
+		})
+	</script>
+	<body>
+		<div style="display: block; color: red;">初始显示</div>
+		<div style="display: none;">初始不显示</div>
+		<button id="btn">点击</button>
+	</body>
+</html>

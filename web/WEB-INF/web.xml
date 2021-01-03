@@ -1,0 +1,470 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app version="2.5" 
+	xmlns="http://java.sun.com/xml/ns/javaee" 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee 
+	http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
+  <display-name></display-name>	
+  
+  <!-- 判断用户账号是否已经存在 -->
+  <servlet>
+  	<servlet-name>LoginIdExistServlet</servlet-name>
+  	<servlet-class>com.controller.LoginIdExistOrNotServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>LoginIdExistServlet</servlet-name>
+  	<url-pattern>/LoginIdExist</url-pattern>
+  </servlet-mapping>
+  <!-- 判断手机号是否已经被绑定 -->
+  <servlet>
+  	<servlet-name>PhoneExistServlet</servlet-name>
+  	<servlet-class>com.controller.PhoneExistOrNotServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>PhoneExistServlet</servlet-name>
+  	<url-pattern>/PhoneExist</url-pattern>
+  </servlet-mapping>
+  <!-- 判断邮箱是否被使用 -->
+  <servlet>
+  	<servlet-name>EmailExistServlet</servlet-name>
+  	<servlet-class>com.controller.EmailExistOrNotServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>EmailExistServlet</servlet-name>
+  	<url-pattern>/EmailExist</url-pattern>
+  </servlet-mapping>
+  <!-- 手机号登录 -->
+  <servlet>
+  	<servlet-name>PhoneLoginServlet</servlet-name>
+  	<servlet-class>com.controller.PhoneLoginServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>PhoneLoginServlet</servlet-name>
+  	<url-pattern>/PhoneLogin</url-pattern>
+  </servlet-mapping>
+  <!-- 手机号登录Ajax验证 -->
+  <servlet>
+  	<servlet-name>PhoneLoginAjaxServlet</servlet-name>
+  	<servlet-class>com.controller.PhoneLoginAjaxServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>PhoneLoginAjaxServlet</servlet-name>
+  	<url-pattern>/PhoneLoginAjax</url-pattern>
+  </servlet-mapping>
+  <!-- 用户账号登录 -->
+  <servlet>
+  	<servlet-name>LoginIdLoginServlet</servlet-name>
+  	<servlet-class>com.controller.LoginIdLoginServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>LoginIdLoginServlet</servlet-name>
+  	<url-pattern>/LoginIdLogin</url-pattern>
+  </servlet-mapping>
+  <!-- 用户账号Ajax验证 -->
+   <servlet>
+  	<servlet-name>LoginIdLoginAjaxServlet</servlet-name>
+  	<servlet-class>com.controller.LoginIdLoginAjaxServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>LoginIdLoginAjaxServlet</servlet-name>
+  	<url-pattern>/LoginIdLoginAjax</url-pattern>
+  </servlet-mapping>
+  <!-- 推荐servlet -->
+  <servlet>
+  	<servlet-name>UserSongListResommendServlet</servlet-name>
+  	<servlet-class>com.controller.UserSongListRecommendServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>UserSongListResommendServlet</servlet-name>
+  	<url-pattern>/UserSongListResommend</url-pattern>
+  </servlet-mapping>
+  <!-- 添加用户听歌记录Servlet -->
+  <servlet>
+  	<servlet-name>AddUserListenSongServlet</servlet-name>
+  	<servlet-class>com.controller.AddUserListenSongServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>AddUserListenSongServlet</servlet-name>
+  	<url-pattern>/AddUserListenSong</url-pattern>
+  </servlet-mapping>
+  <!-- 用户收藏歌单，添加数据 -->
+  <servlet>
+  	<servlet-name>AddUserCollectionSongListServlet</servlet-name>
+  	<servlet-class>com.controller.AddUserCollectionSongListServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>AddUserCollectionSongListServlet</servlet-name>
+  	<url-pattern>/AddUserCollectionSongList</url-pattern>
+  </servlet-mapping>
+  <!-- 查询用户创建的歌单,和收藏的歌单 -->
+  <servlet>
+  	<servlet-name>SelectUserSongListOfUserIdService</servlet-name>
+  	<servlet-class>com.controller.SelectUserSongListOfUserId</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>SelectUserSongListOfUserIdService</servlet-name>
+  	<url-pattern>/SelectUserSongListOfUserId</url-pattern>
+  </servlet-mapping>
+  <!-- 根据歌单编号，查询歌单中的歌曲信息，包括song表中全部信息，cd表中CDName信息，singer表中singerName信息 -->
+  <servlet>
+  	<servlet-name>SelectSongInfoServlet</servlet-name>
+  	<servlet-class>com.controller.SelectSongInfoAndCDNameAndSingerNameOfSongListIdServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>SelectSongInfoServlet</servlet-name>
+  	<url-pattern>/SelectSongInfo</url-pattern>
+  </servlet-mapping>
+  
+  <!-- 歌单热度推荐 -->
+  <servlet>
+  	<servlet-name>SelectSongListToAccessCount</servlet-name>
+  	<servlet-class>com.controller.SelectSongListToAccessCount</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>SelectSongListToAccessCount</servlet-name>
+  	<url-pattern>/SelsctSongListToAccessCount</url-pattern>
+  </servlet-mapping>
+  <!-- 退出登录 -->
+  <servlet>
+  	<servlet-name>ExitServlet</servlet-name>
+  	<servlet-class>com.controller.ExitServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>ExitServlet</servlet-name>
+  	<url-pattern>/Exit</url-pattern>
+  </servlet-mapping>
+  <!-- 用户创建歌单 -->
+  <servlet>
+  	<servlet-name>AddSongListServlet</servlet-name>
+  	<servlet-class>com.controller.AddSongListServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>AddSongListServlet</servlet-name>
+  	<url-pattern>/AddSongList</url-pattern>
+  </servlet-mapping>
+  <!-- 判断该歌单用户是否已经创建 -->
+  <servlet>
+  	<servlet-name>UserCreateTheSongListOrNotServlet</servlet-name>
+  	<servlet-class>com.controller.UserCreateTheSongListOrNotServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>UserCreateTheSongListOrNotServlet</servlet-name>
+  	<url-pattern>/UserCreateTheSongListOrNot</url-pattern>
+  </servlet-mapping>
+  <!-- 用户删除自己创建的歌单 -->
+  <servlet>
+  	<servlet-name>DeleteUserCreateSongListServlet</servlet-name>
+  	<servlet-class>com.controller.DeleteUserCreateSongListServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>DeleteUserCreateSongListServlet</servlet-name>
+  	<url-pattern>/DeleteUserCreateSongList</url-pattern>
+  </servlet-mapping>
+  <!-- 用户修改自己创建的歌单 -->
+  <servlet>
+  	<servlet-name>UpdateSongListInfoServlet</servlet-name>
+  	<servlet-class>com.controller.UpdateSongListInfoServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>UpdateSongListInfoServlet</servlet-name>
+  	<url-pattern>/UpdateSongListInfo</url-pattern>
+  </servlet-mapping>
+  <!-- 用户删除自己收藏的歌单 -->
+  <servlet>
+  	<servlet-name>DeleteUserWithSongListServlet</servlet-name>
+  	<servlet-class>com.controller.DeleteUserWithSongListServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>DeleteUserWithSongListServlet</servlet-name>
+  	<url-pattern>/DeleteUserWithSongList</url-pattern>
+  </servlet-mapping>
+  
+  <!-- 用户把歌曲添加到歌单 -->
+  <servlet>
+  	<servlet-name>AddSongListWithSongServlet</servlet-name>
+  	<servlet-class>com.controller.AddSongListWithSongServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>AddSongListWithSongServlet</servlet-name>
+  	<url-pattern>/AddSongListWithSong</url-pattern>
+  </servlet-mapping>
+  <!-- 从歌单移除歌曲 -->
+  <servlet>
+  	<servlet-name>DeleteSongFromSongListWithSongServlet</servlet-name>
+  	<servlet-class>com.controller.DeleteSongFromSongListWithSongServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>DeleteSongFromSongListWithSongServlet</servlet-name>
+  	<url-pattern>/DeleteSongFromSongListWithSong</url-pattern>
+  </servlet-mapping>
+  <!-- 分页查询热门歌单 -->
+  <servlet>
+  	<servlet-name>SelectSongLIstLimitOfAccessCountServlet</servlet-name>
+  	<servlet-class>com.controller.SelectSongLIstLimitOfAccessCountServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>SelectSongLIstLimitOfAccessCountServlet</servlet-name>
+  	<url-pattern>/SelectSongLIstLimitOfAccessCount</url-pattern>
+  </servlet-mapping>
+  
+  <!-- 为歌单推荐标签 -->
+  <servlet>
+  	<servlet-name>TagsRecommendServlet</servlet-name>
+  	<servlet-class>com.controller.TagsRecommendServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>TagsRecommendServlet</servlet-name>
+  	<url-pattern>/TagsRecommend</url-pattern>
+  </servlet-mapping>
+  
+  <!-- 根据歌曲名模糊分页查询歌曲，搜索 -->
+  <servlet>
+  	<servlet-name>SearchSongServlet</servlet-name>
+  	<servlet-class>com.controller.SearchSongServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>SearchSongServlet</servlet-name>
+  	<url-pattern>/SearchSong</url-pattern>
+  </servlet-mapping>
+  <!-- 根据歌单名模糊分页查询歌单 ，搜索-->
+  <servlet>
+  	<servlet-name>SearchSongListServlet</servlet-name>
+  	<servlet-class>com.controller.SearchSongListServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>SearchSongListServlet</servlet-name>
+  	<url-pattern>/SearchSongList</url-pattern>
+  </servlet-mapping>
+  <!-- 获取用户创建的歌单信息 -->
+  <servlet>
+  	<servlet-name>SelectUserCreateSongList</servlet-name>
+  	<servlet-class>com.controller.SelectUserCreateSongList</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>SelectUserCreateSongList</servlet-name>
+	<url-pattern>/SelectUserCreateSongList</url-pattern>
+  </servlet-mapping>
+  
+  <!-- 用户评论歌单 -->
+  <servlet>
+  	<servlet-name>AddSongListCommentServlet</servlet-name>
+  	<servlet-class>com.controller.AddSongListCommentServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>AddSongListCommentServlet</servlet-name>
+  	<url-pattern>/AddSongListComment</url-pattern>
+  </servlet-mapping>
+  
+  <!-- 歌曲播放量排行 -->
+  <servlet>
+  	<servlet-name>SongPlayCountServlet</servlet-name>
+  	<servlet-class>com.controller.SongPlayCountServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>SongPlayCountServlet</servlet-name>
+  	<url-pattern>/SongPlayCount</url-pattern>
+  </servlet-mapping>
+  
+  <!-- 歌曲下载排行榜 -->
+  <servlet>
+  	<servlet-name>SongDownloadCountServlet</servlet-name>
+  	<servlet-class>com.controller.SongDownloadCountServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>SongDownloadCountServlet</servlet-name>
+  	<url-pattern>/SongDownloadCount</url-pattern>
+  </servlet-mapping>
+  
+  <!-- 歌曲收藏次数排行榜 -->
+  <servlet>
+  	<servlet-name>SongCollectionCountServlet</servlet-name>
+  	<servlet-class>com.controller.SongCollectionCountServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>SongCollectionCountServlet</servlet-name>
+  	<url-pattern>/SongCollectionCount</url-pattern>
+  </servlet-mapping>
+  <!-- 根据用户编号查询用户信息 -->
+  <servlet>
+  	<servlet-name>SelectUserInfoServlet</servlet-name>
+  	<servlet-class>com.controller.SelectUserInfoServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>SelectUserInfoServlet</servlet-name>
+  	<url-pattern>/SelectUserInfo</url-pattern>
+  </servlet-mapping>
+  
+  <!-- 查询用户听歌次数记录 -->
+  <servlet>
+  	<servlet-name>SelectUserListenSongOrderByListenCountDescServlet</servlet-name>
+  	<servlet-class>com.controller.SelectUserListenSongOrderByListenCountDescServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>SelectUserListenSongOrderByListenCountDescServlet</servlet-name>
+  	<url-pattern>/SelectUserListenSongOrderByListenCountDesc</url-pattern>
+  </servlet-mapping>
+  <!-- 修改用户信息 -->
+  <servlet>
+  	<servlet-name>UpdateUserInfoServlet</servlet-name>
+  	<servlet-class>com.controller.UpdateUserInfoServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>UpdateUserInfoServlet</servlet-name>
+  	<url-pattern>/UpdateUserInfo</url-pattern>
+  </servlet-mapping>
+  <!-- 上传头像图片 -->
+  <servlet>
+  	<servlet-name>UpdateUserHeaderImgServlet</servlet-name>
+  	<servlet-class>com.controller.UpdateUserHeaderImgServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>UpdateUserHeaderImgServlet</servlet-name>
+  	<url-pattern>/UpdateUserHeaderImg</url-pattern>
+  </servlet-mapping>
+  
+<!--  &lt;!&ndash; 管理员登录 &ndash;&gt;-->
+<!--  <servlet>-->
+<!--  	<servlet-name>AdminLoginServlet</servlet-name>-->
+<!--  	<servlet-class>com.controller.AdminLoginServlet</servlet-class>-->
+<!--  </servlet>-->
+<!--  <servlet-mapping>-->
+<!--  	<servlet-name>AdminLoginServlet</servlet-name>-->
+<!--  	<url-pattern>/AdminLogin</url-pattern>-->
+<!--  </servlet-mapping>-->
+  
+  <!-- 分页查询所有用户信息 -->
+  <servlet>
+  	<servlet-name>SelectAllUserInfoServlet</servlet-name>
+  	<servlet-class>com.controller.SelectAllUserInfoServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>SelectAllUserInfoServlet</servlet-name>
+  	<url-pattern>/SelectAllUserInfo</url-pattern>
+  </servlet-mapping>
+  
+  <!-- 分页查询歌单评论信息 -->
+  <servlet>
+  	<servlet-name>SelectUserSongListCommentServlet</servlet-name>
+  	<servlet-class>com.controller.SelectUserSongListCommentServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>SelectUserSongListCommentServlet</servlet-name>
+  	<url-pattern>/SelectUserSongListComment</url-pattern>
+  </servlet-mapping>
+  <!-- 上传歌单封面图像 -->
+  <servlet>
+  	<servlet-name>UpdateSongListImgServlet</servlet-name>
+  	<servlet-class>com.controller.UpdateSongListImgServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>UpdateSongListImgServlet</servlet-name>
+  	<url-pattern>/UpdateSongListImg</url-pattern>
+  </servlet-mapping>
+  
+  <!-- 修改用户userStateId封号解封处理 -->
+  <servlet>
+  	<servlet-name>UpdateUserStateIdServlet</servlet-name>
+  	<servlet-class>com.controller.UpdateUserStateIdServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>UpdateUserStateIdServlet</servlet-name>
+  	<url-pattern>/UpdateUserStateId</url-pattern>
+  </servlet-mapping>
+  
+  <!-- 删除评论信息 -->
+	<servlet>
+		<servlet-name>DeleteUserSongListCommentServlet</servlet-name>
+		<servlet-class>com.controller.DeleteUserSongListCommentServlet</servlet-class>
+	</servlet>  
+	<servlet-mapping>
+		<servlet-name>DeleteUserSongListCommentServlet</servlet-name>
+		<url-pattern>/DeleteUserSongListComment</url-pattern>
+	</servlet-mapping>
+	
+	<!-- 分页查询歌曲信息 -->
+	<servlet>
+		<servlet-name>SelectSongLimitServlet</servlet-name>
+		<servlet-class>com.controller.SelectSongLimitServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>SelectSongLimitServlet</servlet-name>
+		<url-pattern>/SelectSongLimit</url-pattern>
+	</servlet-mapping>
+	<!-- 音乐文件上传 -->
+	<servlet>
+		<servlet-name>MusicFileUploadServlet</servlet-name>
+		<servlet-class>com.controller.MusicFileUploadServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>MusicFileUploadServlet</servlet-name>
+		<url-pattern>/MusicFileUpload</url-pattern>
+	</servlet-mapping>
+
+	<!-- 音乐文件上传 -->
+	<servlet>
+		<servlet-name>UploadSongServlet</servlet-name>
+		<servlet-class>com.controller.UploadSongServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>UploadSongServlet</servlet-name>
+		<url-pattern>/UploadSong</url-pattern>
+	</servlet-mapping>
+	
+	<!-- 更改歌曲文件 -->
+	<servlet>
+		<servlet-name>UpdateSongSongUrlServlet</servlet-name>
+		<servlet-class>com.controller.UpdateSongSongUrlServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>UpdateSongSongUrlServlet</servlet-name>
+		<url-pattern>/UpdateSongSongUrl</url-pattern>
+	</servlet-mapping>
+	
+	<!-- 修改歌曲基本信息，只限歌曲名和语种 -->
+	<servlet>
+		<servlet-name>UpdateSongInfoServlet</servlet-name>
+		<servlet-class>com.controller.UpdateSongInfoServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>UpdateSongInfoServlet</servlet-name>
+		<url-pattern>/UpdateSongInfo</url-pattern>
+	</servlet-mapping>
+	<!-- 根据歌曲编号查询歌曲详细信息 -->
+	<servlet>
+		<servlet-name>SelectSongInfoOfSongIdServlet</servlet-name>
+		<servlet-class>com.controller.SelectSongInfoOfSongIdServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>SelectSongInfoOfSongIdServlet</servlet-name>
+		<url-pattern>/SelectSongInfoOfSongId</url-pattern>
+	</servlet-mapping>
+  <!-- 用户注册 -->
+  <servlet>
+  	<servlet-name>UserRegisterServlet</servlet-name>
+  	<servlet-class>com.controller.UserRegisterServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>UserRegisterServlet</servlet-name>
+  	<url-pattern>/UserRegister</url-pattern>
+  </servlet-mapping>
+  <filter>
+  	<filter-name>CharSetFilter</filter-name>
+  	<filter-class>com.filter.CharSetFilter</filter-class>
+  </filter>
+  <filter-mapping>
+  	<filter-name>CharSetFilter</filter-name>
+  	<url-pattern>/*</url-pattern>
+  </filter-mapping>
+  <!-- Ajax跨域请求，改写请求头 -->
+  <filter>
+  	<filter-name>CorsFilter</filter-name>
+  	<filter-class>com.filter.CorsFilter</filter-class>
+  </filter>
+  <filter-mapping>
+  	<filter-name>CorsFilter</filter-name>
+  	<url-pattern>/*</url-pattern>
+  </filter-mapping>
+  <welcome-file-list>
+    <welcome-file>index.jsp</welcome-file>
+  </welcome-file-list>
+</web-app>

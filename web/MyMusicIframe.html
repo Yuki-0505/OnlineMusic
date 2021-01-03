@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Insert title here</title>
+    <meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
+    <meta http-equiv="description" content="this is my page">
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <link rel="stylesheet" type="text/css" href="css/MyMusicIframe.css">
+</head>
+<script type="text/javascript" src="js/jquery-3.2.1.js"></script>
+<script type="text/javascript" src="js/jquery.wresize.js"></script>
+
+<script type="text/javascript" src="js/MyMusicIframe.js"></script>
+<script type="text/javascript" src="js/GetSongListInfo.js"></script>
+<script type="text/javascript" src="js/MyMusicIframeCreateSongList.js"></script>
+
+<body>
+<!--用户把点击加入歌单显示页面-->
+<div class="addSongList_showDiv">
+    <div class="addSongList_showDiv_header">添加到歌单<span title="关闭" id="none_addSongList_showDiv">+</span></div>
+    <div class="addSongList_songList">
+        <!--用于显示用户创建的歌单-->
+    </div>
+</div>
+<!-- 点击创建歌单弹出的创建界面 -->
+<div class="createSongList_div">
+    <div class="createSongList_head">新建歌单<span id="none_createSongList">+</span></div>
+    <input name="songListName" id="songListName" placeholder="歌单名"/>
+    <p id="nullJG"></p>
+    <p id="tishi">可通过“收藏”将音乐添加到新歌单中</p>
+    <button id="createSongListButton">创建</button>
+    <button id="quxiaoCreateButton">取消</button>
+</div>
+<!-- 点击修改歌单信息 -->
+<div class="updateSongList_div">
+    <p>编辑歌单<span id="none_updateDiv">+</span></p>
+    <input type="hidden" value="" id="choose_songListId"/>
+    <table id="update_table">
+        <tr>
+            <td><span>*</span>歌单名：</td>
+            <td><input type="text" required="required" value="" id="update_songListName" name="update_songListName"/>
+            </td>
+        </tr>
+        <tr>
+            <td>标签：</td>
+            <td>
+                <span id="tags_yet"></span>
+                <!--用于显示已经存在的标签，或者显示选择的标签-->
+                <span id="choose_tags">
+
+          </span>
+                <p>选择适合的标签，最多选3个</p>
+
+            </td>
+        </tr>
+        <tr>
+            <td>简介：</td>
+            <td><textarea id="introduce" value=""></textarea></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td>
+                <button id="save_update_button">保存</button>
+                <button id="notsave_update_button">取消</button>
+            </td>
+        </tr>
+    </table>
+</div>
+
+<!--显示可以选择的标签-->
+<div class="tags_choose_input_div">
+    <div class="tags_choose_input_div_header">
+        <span>选择标签</span>
+        <i title="关闭" id="close_tags_choose">+</i>
+    </div>
+    <table id="choose_tags_table">
+
+    </table>
+</div>
+<!-- 我的音乐，iframe加载页面 -->
+<div class="mymusic_content">
+    <div class="mymusic_content_left">
+        <div name="list_title" class="mycreate_songList_title">
+            <span id="zhedie">我创建的歌单</span>
+            <a id="createSongList_a" href="#">新建</a>
+        </div>
+        <div id="mySongList" class="mySongList">
+
+        </div>
+        <div name="list_title" id="mycollectionsongList" class="mycollection_songList_title"><span>我收藏的歌单</span>
+        </div>
+        <div id="myColleSongList" class="myCollectionList">
+        </div>
+    </div>
+
+    <div class="mymusic_content_right">
+        <div id="showOrNot">
+            <!-- <div class="music_right_header">
+              <div class="songListImgDiv">
+                <img alt="图片" src="images/yui.jpg" id="songList_photo" height="200" width="200">
+                <span class="updateSongListImg_span">修改封面</span>
+              </div>
+              <div class="music_right_header_songlist_info">
+                <p>
+                  <span>歌单</span>&nbsp;&nbsp;&nbsp;&nbsp;
+                  <span id="songList_Name"></span>
+                </p>
+                <p>
+                  <img alt="用户头像" id="createTheSongList_user_header_photo" src="" width="50" height="50" />
+                  <span id="userName"></span>
+                </p>
+                <p>
+                  <a>播放</a>
+                </p>
+              </div>
+            </div> -->
+            <h2 class="songList_song_title">
+                歌曲列表
+                <input type="button" value="上传" id="upload_btn" style="margin-left: 310px"/>
+                <input type="file" id="musicFile" style="margin-left: 0px"/>
+            </h2>
+
+            <div class="songList_song">
+                <table id="song_list_table" cellspacing="0" cellpadding="0" border="0">
+                    <tr class="table_title">
+                        <td></td>
+                        <td>歌曲标题</td>
+                        <td>时长</td>
+                        <td>歌手</td>
+                        <td>专辑</td>
+                    </tr>
+                </table>
+            </div>
+            <h2 class="songList_comment_title">评论</h2>
+            <div class="write_songlist_comment">
+                <img align="top" alt="用户头像" id="user_header_photo" src="images/akari.jpg" width="50" height="50"/>
+                <textarea id="songlist_comment_textarea" placeholder="评论" rows="4" cols="85"></textarea>
+                <button id="comment_submit" songlistid="">评论</button>
+            </div>
+            <ul id="comment_ul">
+                <!--<li class="comment_ul_li">
+                                  <div class="commUserHeaderImg_div">
+                                      <img class="commUserHeaderImg" src="images/LOGO.png" width="100%" />
+                                  </div>
+                                  <div class="commContent_div">
+                                      <span id="commUserName">用户名：</span>
+                                      <span id="commContent">评论内容评论内容评论内容评论内容评论内容评论内容评论内容评论内容</span>
+                                      <p class="commDate">时间：2019-02-05</p>
+                                  </div>
+                              </li>
+                              <div class="clear"></div>-->
+            </ul>
+        </div>
+    </div>
+</div>
+<script>
+    $('#upload_btn').click(function () {
+        $('#musicFile').val("");
+        alert("上传成功");
+    });
+</script>
+</body>
+
+</html>
